@@ -9,3 +9,29 @@
     background-color: white;
     color: rgb(49,80,218);
 }
+.carddiv{
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+.card {
+    width: 20vw;
+    border-radius: 5px;
+    border: 1px solid rgb(49, 80, 218);
+}
+
+.inputstyle {
+    width: 18vw;
+    height: 30px;
+    margin: 12px;
+}
+
+.loginbtn{
+    width: 18vw;
+    height: 30px;
+    margin: 12px;
+    background-color: rgb(49, 80, 218);
+    color: white;
+    border: 5px solid rgb(49, 80, 218);
+}
