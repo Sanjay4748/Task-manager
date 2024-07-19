@@ -11,6 +11,7 @@ function Header() {
             <Button className={styles.buttonpart}>
                 Signup
             </Button>
+            
         </div>
     );
 }
