@@ -1,0 +1,47 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+app.use(express.json());
+
+// Define your schema and model (replace this with your actual model)
+const taskSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  dueDate: Date,
+  priority: String
+});
+
+const Task = mongoose.model('Task', taskSchema);
+
+app.get('/api/GetTask', async (req, res) => {
+  try {
+    const { dueDate } = req.body;
+
+    // Validate the dueDate
+    if (!dueDate) {
+      return res.status(400).json({ error: 'dueDate is required' });
+    }
+
+    const task = await Task.findOne({ dueDate: new Date(dueDate) });
+
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    res.status(200).json(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Connect to MongoDB and start the server (replace with your MongoDB URI)
+mongoose.connect('your_mongodb_uri', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    app.listen(3000, () => {
+      console.log('Server is running on port 3000');
+    });
+  })
+  .catch(err => {
+    console.error('Failed to connect to MongoDB', err);
+  });
