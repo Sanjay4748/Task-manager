@@ -1,0 +1,11 @@
+.navbar{
+    display: flex;
+    background-color: rgb(49, 80, 218);
+    justify-content: end;
+}
+
+.buttonpart{
+    margin: 10px;
+    background-color: white;
+    color: rgb(49,80,218);
+}
